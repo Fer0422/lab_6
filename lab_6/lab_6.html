@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab 6 Fernando Rojas</title>
+</head>
+<body>
+
+
+<!-- form 1 -->
+<!-- name -->
+<form name="myForm" action="/action_page.php" onsubmit="return namevalidateForm()" method="post">
+    Name: <input type="text" name="fname">
+    <input type="submit" value="Submit">
+</form>
+
+<!-- email -->
+<form name="form1" action="#"> 
+    Email: <input type='text' name='text1'/>
+    <class="submit"><input type="submit" name="submit" value="Submit" onclick="ValidateEmail(document.form1.text1)"/>
+</form>
+
+<!-- phone -->
+<br>
+<br>
+<form name="myForm" action="/action_page.php" onsubmit="return phonevalidateForm()" method="post">
+    Phone: <input type="text" name="fname">
+    <input type="submit" value="Submit">
+</form>
+
+<!-- sign up -->
+<button onclick="signUp()">Sign Up</button>
+<br><br>
+<!-- form #2 -->
+<legend>Which teams are from SF?</legend>
+<label><INPUT TYPE="checkbox" NAME="input" VALUE="right">49ers<BR></label>
+<label><INPUT TYPE="checkbox" NAME="input" VALUE="right">Warriors<BR></label>
+<label><INPUT TYPE="checkbox" NAME="input" VALUE="right">Giants<BR></label>
+<label><INPUT TYPE="checkbox" NAME="input" VALUE="wrong">Dodgers<BR></label>
+<label><INPUT TYPE="checkbox" NAME="input" VALUE="right">A's<BR></label>
+<label><INPUT TYPE="checkbox" NAME="input" VALUE="right">Sharks<BR></label>
+
+    <input type="button" id="answer" value="Submit">
+
+
+    <script>
+        // name
+        function namevalidateForm() {
+          let x = document.forms["myForm"]["fname"].value;
+          if (x == "") {
+            alert("Name must be filled out");
+            return false;
+          }
+        }
+
+        // email
+        function ValidateEmail(inputText){
+
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        
+            if(inputText.value.match(mailformat)){
+            alert("Valid email address!");
+            document.form1.text1.focus();
+            return true;
+            } else {
+            alert("You have entered an invalid email address!");
+            document.form1.text1.focus();
+            return false;
+            }
+        }
+        // phone
+        function phonevalidateForm() {
+          let x = document.forms["myForm"]["fname"].value;
+          if (x == "") {
+            alert("phone must be filled out");
+            return false;
+          }
+        }
+
+        //  sign up
+        function signUp(){
+           alert("You have signed up");
+
+        }
+
+        // form #2
+        document.getElementById("answer").onclick = validate;
+
+function validate() {
+    var checkboxes = document.getElementsByName("input");
+    var checkboxChecked = []; 
+
+    for(var i = 0; i < checkboxes.length; i++) {
+        if(checkboxes[i].checked && (checkboxes[i].value === "right")) {
+            checkboxChecked.push(checkboxes[i]);
+        }
+            }
+
+    if(checkboxChecked.length === 5) {
+        alert("You answered correctly");
+    } 
+    else {
+        alert("Wrong answer");
+    }
+}
+
+        </script>
+        
+</body>
+</html>
